@@ -1,0 +1,35 @@
+export const authService = {
+    recoverInvalidStoredSession: jest.fn().mockResolvedValue(false),
+    requestEmailOtp: jest.fn().mockResolvedValue({ success: true, message: 'OTP sent' }),
+    verifyEmailOTP: jest.fn().mockResolvedValue({
+        success: true,
+        user_id: 'mock-user-id',
+        role: 'customer',
+        account_status: 'active'
+    }),
+    sendPasswordResetOtp: jest.fn().mockResolvedValue({ success: true, message: 'OTP sent' }),
+    verifyPasswordResetOtp: jest.fn().mockResolvedValue({ success: true, message: 'Password updated' }),
+    signInWithEmail: jest.fn().mockResolvedValue({ user: { id: 'mock-user-id' } }),
+    signOut: jest.fn().mockResolvedValue(undefined),
+    resetPassword: jest.fn().mockResolvedValue(undefined),
+    updatePassword: jest.fn().mockResolvedValue(undefined),
+    getCurrentUser: jest.fn().mockResolvedValue(null),
+    getCurrentSession: jest.fn().mockResolvedValue(null),
+    updateUserProfile: jest.fn().mockResolvedValue(undefined),
+    checkEmailExists: jest.fn().mockResolvedValue({
+        emailExists: false,
+        emailInPublic: false,
+        isGhost: false,
+        isFullyRegistered: false,
+    }),
+    checkPhoneExists: jest.fn().mockResolvedValue({
+        phoneExists: false,
+        phoneInPublic: false,
+        isGhost: false,
+        isFullyRegistered: false,
+    }),
+    onAuthChange: jest.fn(() => jest.fn()),
+    subscribeToAccountRole: jest.fn(() => jest.fn()),
+    getUserRole: jest.fn().mockResolvedValue('customer'),
+    getAccountStatus: jest.fn().mockResolvedValue('active'),
+};

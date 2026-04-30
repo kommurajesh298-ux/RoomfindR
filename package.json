@@ -1,0 +1,65 @@
+{
+    "name": "roomfindr-monorepo",
+    "version": "1.0.0",
+    "private": true,
+    "description": "RoomFindR - real-time PG and room booking platform",
+    "scripts": {
+        "test:all": "npm run test:customer && npm run test:owner && npm run test:admin",
+        "test:customer": "cd customer-app && npm test && npm run test:e2e",
+        "test:owner": "cd owner-app && npm test && npm run test:e2e",
+        "test:admin": "cd admin-panel && npm test && npm run test:e2e",
+        "verify:auth": "node scripts/verify-auth-flows.mjs",
+        "verify:cashfree": "node scripts/verify-cashfree-live-flow.mjs",
+        "lint:all": "npm run lint:customer && npm run lint:owner && npm run lint:admin",
+        "lint:customer": "cd customer-app && npm run lint",
+        "lint:owner": "cd owner-app && npm run lint",
+        "lint:admin": "cd admin-panel && npm run lint",
+        "build:all": "npm run build:customer && npm run build:owner && npm run build:admin",
+        "build:customer": "cd customer-app && npm run build",
+        "build:owner": "cd owner-app && npm run build",
+        "build:admin": "cd admin-panel && npm run build",
+        "dev:all": "concurrently \"npm run dev:customer\" \"npm run dev:owner\" \"npm run dev:admin\"",
+        "dev:customer": "cd customer-app && npm run dev",
+        "dev:owner": "cd owner-app && npm run dev",
+        "dev:admin": "cd admin-panel && npm run dev",
+        "test:e2e:all": "playwright test",
+        "loadtest:k6:public-browse": "k6 run load-tests/k6/public-browse.js",
+        "loadtest:k6:customer-bookings": "k6 run load-tests/k6/customer-bookings.js",
+        "loadtest:k6:payment-status": "k6 run load-tests/k6/payment-status.js",
+        "loadtest:k6:payment-create": "k6 run load-tests/k6/payment-create.js",
+        "loadtest:k6:payment-webhook": "k6 run load-tests/k6/payment-webhook.js",
+        "docker:build:customer": "docker build -f infra/docker/customer.Dockerfile -t roomfindr/customer-app:prod .",
+        "docker:build:owner": "docker build -f infra/docker/owner.Dockerfile -t roomfindr/owner-app:prod .",
+        "docker:build:admin": "docker build -f infra/docker/admin.Dockerfile -t roomfindr/admin-panel:prod .",
+        "seed:users": "node scripts/seed-users.js",
+        "seed:properties": "node scripts/seed-properties.js"
+    },
+    "workspaces": [
+        "customer-app",
+        "owner-app",
+        "admin-panel"
+    ],
+    "devDependencies": {
+        "@supabase/supabase-js": "^2.100.0",
+        "concurrently": "^8.2.2",
+        "dotenv": "^17.2.3"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/kommurajesh298-ux/RoomfindR.git"
+    },
+    "keywords": [
+        "room-rental",
+        "property-management",
+        "react",
+        "typescript",
+        "supabase"
+    ],
+    "author": "Rajesh",
+    "license": "MIT",
+    "overrides": {
+        "@capacitor/core": "8.3.0",
+        "@capacitor/cli": "8.3.0",
+        "@capacitor/android": "8.3.0"
+    }
+}

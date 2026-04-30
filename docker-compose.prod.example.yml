@@ -1,0 +1,62 @@
+services:
+  customer-app:
+    build:
+      context: .
+      dockerfile: infra/docker/customer.Dockerfile
+      args:
+        VITE_SUPABASE_URL: ${VITE_SUPABASE_URL}
+        VITE_SUPABASE_ANON_KEY: ${VITE_SUPABASE_ANON_KEY}
+        VITE_PAYMENT_PROVIDER: ${VITE_PAYMENT_PROVIDER:-cashfree}
+        VITE_CASHFREE_ENV: ${VITE_CASHFREE_ENV:-production}
+        VITE_PAYMENT_RETURN_BASE_URL: ${VITE_PAYMENT_RETURN_BASE_URL}
+        VITE_SENTRY_DSN: ${VITE_SENTRY_DSN}
+        VITE_SENTRY_ENVIRONMENT: ${VITE_SENTRY_ENVIRONMENT:-production}
+        VITE_SENTRY_RELEASE: ${VITE_SENTRY_RELEASE}
+        VITE_SENTRY_TRACES_SAMPLE_RATE: ${VITE_SENTRY_TRACES_SAMPLE_RATE:-0.1}
+    image: roomfindr/customer-app:prod
+    restart: unless-stopped
+    environment:
+      NODE_ENV: production
+    ports:
+      - "8080:80"
+
+  owner-app:
+    build:
+      context: .
+      dockerfile: infra/docker/owner.Dockerfile
+      args:
+        VITE_SUPABASE_URL: ${VITE_SUPABASE_URL}
+        VITE_SUPABASE_ANON_KEY: ${VITE_SUPABASE_ANON_KEY}
+        VITE_SENTRY_DSN: ${VITE_SENTRY_DSN}
+        VITE_SENTRY_ENVIRONMENT: ${VITE_SENTRY_ENVIRONMENT:-production}
+        VITE_SENTRY_RELEASE: ${VITE_SENTRY_RELEASE}
+        VITE_SENTRY_TRACES_SAMPLE_RATE: ${VITE_SENTRY_TRACES_SAMPLE_RATE:-0.1}
+    image: roomfindr/owner-app:prod
+    restart: unless-stopped
+    environment:
+      NODE_ENV: production
+    ports:
+      - "8081:80"
+
+  admin-panel:
+    build:
+      context: .
+      dockerfile: infra/docker/admin.Dockerfile
+      args:
+        VITE_SUPABASE_URL: ${VITE_SUPABASE_URL}
+        VITE_SUPABASE_ANON_KEY: ${VITE_SUPABASE_ANON_KEY}
+        VITE_SENTRY_DSN: ${VITE_SENTRY_DSN}
+        VITE_SENTRY_ENVIRONMENT: ${VITE_SENTRY_ENVIRONMENT:-production}
+        VITE_SENTRY_RELEASE: ${VITE_SENTRY_RELEASE}
+        VITE_SENTRY_TRACES_SAMPLE_RATE: ${VITE_SENTRY_TRACES_SAMPLE_RATE:-0.1}
+    image: roomfindr/admin-panel:prod
+    restart: unless-stopped
+    environment:
+      NODE_ENV: production
+    ports:
+      - "8082:80"
+
+# For horizontal scaling in a real production environment, deploy these images behind:
+# - AWS ALB + Auto Scaling Group, or
+# - ECS/Fargate/Kubernetes, or
+# - Nginx reverse proxy with multiple replicas per app.

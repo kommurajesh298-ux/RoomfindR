@@ -1,0 +1,18 @@
+[build]
+command = "npm run build"
+publish = "dist"
+
+[build.environment]
+NODE_VERSION = "20"
+
+[[headers]]
+for = "/*"
+
+[headers.values]
+Content-Security-Policy = "default-src 'self'; base-uri 'self'; frame-ancestors 'none'; object-src 'none'; form-action 'self' https:; manifest-src 'self'; script-src 'self' blob: https://sdk.cashfree.com; worker-src 'self' blob:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https: blob:; connect-src 'self' https://*.supabase.co wss://*.supabase.co https://*.api-bdc.io https://api-bdc.io https://*.bigdatacloud.net https://api.bigdatacloud.net https://firebasestorage.googleapis.com https://stats.g.doubleclick.net https://www.google-analytics.com https://*.cashfree.com blob:; font-src 'self' data: https: https://fonts.gstatic.com; frame-src 'self' https://*.cashfree.com;"
+Permissions-Policy = "geolocation=(self), camera=(), microphone=(), accelerometer=(), gyroscope=(), magnetometer=(), display-capture=(), usb=(), serial=(), bluetooth=()"
+Referrer-Policy = "strict-origin-when-cross-origin"
+Strict-Transport-Security = "max-age=31536000; includeSubDomains"
+X-Content-Type-Options = "nosniff"
+X-Frame-Options = "DENY"
+X-Permitted-Cross-Domain-Policies = "none"

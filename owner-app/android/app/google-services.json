@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "238188861238",
+    "project_id": "roomfindr-customer",
+    "storage_bucket": "roomfindr-customer.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:238188861238:android:a3af7a13cc463fc9128597",
+        "android_client_info": {
+          "package_name": "com.roomfinder.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDBdtbG4NXGJBzLDVrosuJPOLgcU_ZACWI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:238188861238:android:60c0174d4031cda9128597",
+        "android_client_info": {
+          "package_name": "com.roomfindr.owner"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDBdtbG4NXGJBzLDVrosuJPOLgcU_ZACWI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,22 @@
+{
+    "extends": "./tsconfig.app.json",
+    "compilerOptions": {
+        "module": "CommonJS",
+        "moduleResolution": "node",
+        "types": [
+            "jest",
+            "@testing-library/jest-dom",
+            "node"
+        ],
+        "noEmit": true,
+        "verbatimModuleSyntax": false,
+        "isolatedModules": true
+    },
+    "exclude": [],
+    "include": [
+        "src/test/**/*.ts",
+        "src/test/**/*.tsx",
+        "src/**/*.test.ts",
+        "src/**/*.test.tsx"
+    ]
+}

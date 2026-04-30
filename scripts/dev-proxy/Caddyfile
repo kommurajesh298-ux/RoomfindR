@@ -1,0 +1,9 @@
+{
+  auto_https off
+}
+
+:4173 {
+  handle {
+    reverse_proxy http://localhost:5173
+  }
+}
