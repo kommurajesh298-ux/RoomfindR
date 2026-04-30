@@ -70,7 +70,7 @@ const App: React.FC = () => {
 
   return (
     <ErrorBoundary>
-      <Router>
+      <Router basename={import.meta.env.BASE_URL}>
         <NativeAppBridge />
         <AuthProvider>
           <Toaster

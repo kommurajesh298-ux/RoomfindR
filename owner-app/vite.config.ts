@@ -29,6 +29,7 @@ const createManualChunks = (id: string) => {
 
 // https://vite.dev/config/
 export default defineConfig(({ mode }) => ({
+  base: process.env.VITE_APP_BASE || '/',
   plugins: [
     react(),
   ],

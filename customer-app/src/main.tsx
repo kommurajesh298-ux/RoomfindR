@@ -21,7 +21,7 @@ createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <ErrorBoundary>
       <NetworkProvider>
-        <Router>
+        <Router basename={import.meta.env.BASE_URL}>
           <AuthProvider>
             <LayoutProvider>
               <OfflineBanner />
