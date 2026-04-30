@@ -22,13 +22,13 @@ export const BookingModal: React.FC<BookingModalProps> = ({ property, onClose, o
                             onError={(e) => {
                                 const target = e.target as HTMLImageElement;
                                 if (!target.src.includes('hostel-1.avif')) {
-                                    target.src = '/assets/images/properties/hostel-1.avif';
+                                    target.src = `${import.meta.env.BASE_URL}assets/images/properties/hostel-1.avif`;
                                 }
                             }}
                         />
                     ) : (
                         <img
-                            src="/assets/images/properties/hostel-1.avif"
+                            src={`${import.meta.env.BASE_URL}assets/images/properties/hostel-1.avif`}
                             alt={property.title}
                             className="w-full h-full object-cover"
                         />

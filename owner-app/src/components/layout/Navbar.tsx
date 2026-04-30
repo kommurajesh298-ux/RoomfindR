@@ -94,7 +94,7 @@ const Navbar: React.FC = () => {
                 <div className="flex h-16 items-center justify-between gap-4 md:h-20">
                     <Link to="/dashboard" className="owner-topbar-logo flex items-center gap-3">
                         <img
-                            src="/assets/images/logos/logo-inline.png"
+                            src={`${import.meta.env.BASE_URL}assets/images/logos/logo-inline.png`}
                             alt="RoomFindR"
                             className="owner-topbar-logo-img h-10 md:h-12 w-auto max-w-[196px] rounded-[18px] object-contain shadow-[0_10px_22px_rgba(37,99,235,0.18)]"
                         />

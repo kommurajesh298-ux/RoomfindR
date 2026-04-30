@@ -2,7 +2,6 @@ import { mkdir, readFile, writeFile } from 'node:fs/promises'
 import path from 'node:path'
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
-import legacy from '@vitejs/plugin-legacy'
 import tailwindcss from '@tailwindcss/vite'
 
 const netlifyRedirects = () => ({
@@ -59,14 +58,6 @@ export default defineConfig(({ mode }) => ({
   base: process.env.VITE_APP_BASE || '/',
   plugins: [
     react(),
-    legacy({
-      // Keep legacy fallbacks available without forcing every production build
-      // onto the older SystemJS boot path. Modern Android WebViews should use
-      // the standard module entry, while older browsers can still fall back.
-      targets: ['Chrome >= 61', 'Android >= 6', 'Safari >= 13', 'iOS >= 13'],
-      modernPolyfills: true,
-      renderLegacyChunks: true,
-    }),
     tailwindcss(),
     netlifyRedirects(),
   ],

@@ -7,7 +7,7 @@ import { initializeMonitoring } from './utils/monitoring';
 import LoadingOverlay from './components/common/LoadingOverlay';
 import { loadLazyModuleWithRecovery } from './utils/lazyWithPreload';
 
-import { BrowserRouter as Router } from 'react-router-dom';
+import { HashRouter as Router } from 'react-router-dom';
 import { AuthProvider } from './contexts/AuthContext';
 import { LayoutProvider } from './contexts/LayoutContext';
 import { NetworkProvider } from './contexts/NetworkContext';
@@ -21,7 +21,7 @@ createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <ErrorBoundary>
       <NetworkProvider>
-        <Router basename={import.meta.env.BASE_URL}>
+        <Router>
           <AuthProvider>
             <LayoutProvider>
               <OfflineBanner />

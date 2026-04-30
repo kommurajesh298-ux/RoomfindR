@@ -1,6 +1,6 @@
 import React, { Suspense } from "react";
 import {
-  BrowserRouter as Router,
+  HashRouter as Router,
   Routes,
   Route,
   Navigate,
@@ -122,7 +122,7 @@ function App() {
 
   return (
     <ErrorBoundary>
-      <Router basename={import.meta.env.BASE_URL}>
+      <Router>
         <NativeAppBridge />
         <SiteProvider>
           <AuthProvider>

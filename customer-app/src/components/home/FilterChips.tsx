@@ -26,7 +26,7 @@ const CATEGORIES: CategoryMeta[] = [
     { id: 'Girls', label: 'Girls', accent: '#F472B6', glow: 'rgba(244,114,182,0.24)', image: girlsCategoryImage, imagePosition: '70% 34%', imageScale: 1.9 },
     { id: 'Boys', label: 'Boys', accent: '#38BDF8', glow: 'rgba(56,189,248,0.24)', image: boysCategoryImage, imagePosition: '50% 48%', imageScale: 1.32 },
     { id: 'Co-living', label: 'Co-living', accent: '#14B8A6', glow: 'rgba(20,184,166,0.24)', image: coLivingCategoryImage, imagePosition: '50% 34%', imageScale: 1.55 },
-    { id: 'Hostel', label: 'Hostel', accent: '#FB923C', glow: 'rgba(251,146,60,0.24)', image: '/assets/images/properties/hostel-2.webp', imagePosition: '52% 30%', imageScale: 1.3 },
+    { id: 'Hostel', label: 'Hostel', accent: '#FB923C', glow: 'rgba(251,146,60,0.24)', image: `${import.meta.env.BASE_URL}assets/images/properties/hostel-2.webp`, imagePosition: '52% 30%', imageScale: 1.3 },
     { id: 'Premium', label: 'Premium', accent: '#EAB308', glow: 'rgba(234,179,8,0.24)', image: premiumCategoryImage, imagePosition: '50% 18%', imageScale: 1.78 },
     { id: 'Luxury', label: 'Luxury', accent: '#10B981', glow: 'rgba(16,185,129,0.24)', image: luxuryCategoryImage, imagePosition: '48% 56%', imageScale: 1.18 }
 ];

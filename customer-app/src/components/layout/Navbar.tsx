@@ -130,7 +130,7 @@ const Navbar: React.FC<NavbarProps> = ({ currentLocation = 'Select Location', on
                     <div className="hidden items-center gap-4 px-6 py-4 md:flex">
                         <Link to="/" className="hidden items-center lg:flex">
                             <img
-                                src="/assets/images/logos/logo-inline.png"
+                                src={`${import.meta.env.BASE_URL}assets/images/logos/logo-inline.png`}
                                 alt="RoomFindR"
                                 className="rfm-logo-image no-logo-badge h-12 w-auto max-w-[210px] object-contain"
                             />

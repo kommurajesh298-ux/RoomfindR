@@ -27,28 +27,28 @@ const BANNER_SLIDES: BannerSlide[] = [
         variant: 'minimal',
         lines: ['Move in', 'faster'],
         anchor: 'left-center',
-        imageSrc: '/assets/images/banners/banner4.png',
+        imageSrc: `${import.meta.env.BASE_URL}assets/images/banners/banner4.png`,
     },
     {
         id: 'trust',
         variant: 'badge',
         lines: ['Find Your', 'Perfect', 'PG'],
         anchor: 'left-center',
-        imageSrc: '/assets/images/banners/banner1.png',
+        imageSrc: `${import.meta.env.BASE_URL}assets/images/banners/banner1.png`,
     },
     {
         id: 'comfort',
         variant: 'gradient',
         lines: ['Best PGs in', 'Bengaluru'],
         anchor: 'top-left',
-        imageSrc: '/assets/images/banners/banner2.png',
+        imageSrc: `${import.meta.env.BASE_URL}assets/images/banners/banner2.png`,
     },
     {
         id: 'discovery',
         variant: 'stacked',
         lines: ['Student', 'Friendly', 'PG Rooms'],
         anchor: 'left-center',
-        imageSrc: '/assets/images/banners/banner3.png',
+        imageSrc: `${import.meta.env.BASE_URL}assets/images/banners/banner3.png`,
     },
 ];
 

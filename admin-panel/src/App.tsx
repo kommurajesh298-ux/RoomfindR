@@ -1,5 +1,5 @@
 import React, { Suspense } from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate, useNavigate } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route, Navigate, useNavigate } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
 import { AuthProvider } from './contexts/AuthContext';
 import ProtectedRoute from './components/common/ProtectedRoute';
@@ -70,7 +70,7 @@ const App: React.FC = () => {
 
   return (
     <ErrorBoundary>
-      <Router basename={import.meta.env.BASE_URL}>
+      <Router>
         <NativeAppBridge />
         <AuthProvider>
           <Toaster

@@ -94,7 +94,7 @@ const BookingCard: React.FC<BookingCardProps> = React.memo(({
             {/* Top Section: Property Image & Status */}
             <div className="relative h-40 sm:h-56 overflow-hidden">
                 <img
-                    src={booking.rooms?.images?.[0] || propertyDetails?.images?.[0] || '/assets/images/properties/hostel-1.avif'}
+                    src={booking.rooms?.images?.[0] || propertyDetails?.images?.[0] || `${import.meta.env.BASE_URL}assets/images/properties/hostel-1.avif`}
                     alt={displayTitle}
                     className={`w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000 ${isCancelled ? 'grayscale' : ''}`}
                     loading="lazy"

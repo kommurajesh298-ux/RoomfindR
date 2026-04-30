@@ -159,7 +159,7 @@ const Sidebar: React.FC<SidebarProps> = ({
                             <div className="relative flex min-w-0 items-center gap-2.5">
                                 <div className="flex h-[38px] shrink-0 items-center">
                                     <img
-                                        src="/assets/images/logos/logo-inline.png"
+                                        src={`${import.meta.env.BASE_URL}assets/images/logos/logo-inline.png`}
                                         alt="RoomFindR"
                                         className="h-full w-auto max-w-[112px] rounded-[18px] object-contain no-logo-badge drop-shadow-[0_8px_16px_rgba(37,99,235,0.12)]"
                                     />

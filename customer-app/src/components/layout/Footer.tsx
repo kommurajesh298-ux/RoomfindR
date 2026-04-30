@@ -8,7 +8,7 @@ const Footer: React.FC = () => {
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
                     {/* About Section */}
                     <div>
-                        <img src="/assets/images/logos/logo-inline.png" alt="RoomFindR" className="no-logo-badge mb-4 h-14 w-auto max-w-[210px] rounded-[18px] object-contain shadow-[0_18px_32px_rgba(11,45,102,0.22)]" />
+                        <img src={`${import.meta.env.BASE_URL}assets/images/logos/logo-inline.png`} alt="RoomFindR" className="no-logo-badge mb-4 h-14 w-auto max-w-[210px] rounded-[18px] object-contain shadow-[0_18px_32px_rgba(11,45,102,0.22)]" />
                         <p className="text-[#eef6ff] text-sm leading-relaxed">
                             Find your perfect PG, hostel, or co-living space across India.
                         </p>

@@ -9,7 +9,7 @@ interface LogoAnimationProps {
 
 const LogoAnimation: React.FC<LogoAnimationProps> = ({
     animationData,
-    staticLogo = '/assets/images/logos/logo-inline.png',
+    staticLogo = `${import.meta.env.BASE_URL}assets/images/logos/logo-inline.png`,
     className = 'h-12 w-auto'
 }) => {
     // Use lazy initialization to check sessionStorage only once
