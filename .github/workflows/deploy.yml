@@ -34,16 +34,22 @@ jobs:
         run: npm run build:customer
         env:
           VITE_APP_BASE: /RoomfindR/customer/
+          VITE_SUPABASE_URL: ${{ vars.VITE_SUPABASE_URL }}
+          VITE_SUPABASE_ANON_KEY: ${{ vars.VITE_SUPABASE_ANON_KEY }}
 
       - name: Build owner app
         run: npm run build:owner
         env:
           VITE_APP_BASE: /RoomfindR/owner/
+          VITE_SUPABASE_URL: ${{ vars.VITE_SUPABASE_URL }}
+          VITE_SUPABASE_ANON_KEY: ${{ vars.VITE_SUPABASE_ANON_KEY }}
 
       - name: Build admin panel
         run: npm run build:admin
         env:
           VITE_APP_BASE: /RoomfindR/admin/
+          VITE_SUPABASE_URL: ${{ vars.VITE_SUPABASE_URL }}
+          VITE_SUPABASE_ANON_KEY: ${{ vars.VITE_SUPABASE_ANON_KEY }}
 
       - name: Assemble Pages site
         shell: bash
