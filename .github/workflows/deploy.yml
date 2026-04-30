@@ -10,9 +10,7 @@ concurrency:
   cancel-in-progress: true
 
 permissions:
-  contents: read
-  pages: write
-  id-token: write
+  contents: write
 
 jobs:
   build-pages:
@@ -90,18 +88,10 @@ jobs:
           </html>
           HTML
 
-      - name: Configure GitHub Pages
-        uses: actions/configure-pages@v5
-
-      - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v3
+      - name: Publish to gh-pages branch
+        uses: peaceiris/actions-gh-pages@v4
         with:
-          path: pages-site
-
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
-
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: pages-site
+          publish_branch: gh-pages
+          force_orphan: true

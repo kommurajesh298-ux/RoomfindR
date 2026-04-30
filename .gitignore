@@ -1,6 +1,8 @@
 node_modules
 .codex-logs/
+.playwright-mcp/
 .vscode/
+pages-site-local/
 apk-downloads/
 */dist/
 */android/app/build/
