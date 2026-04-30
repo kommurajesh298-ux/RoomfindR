@@ -178,7 +178,7 @@ const Sidebar: React.FC<SidebarProps> = ({
                         <div className="relative flex h-[58px] w-[58px] shrink-0 items-center justify-center overflow-hidden rounded-[22px] border border-[rgba(148,163,184,0.24)] bg-[linear-gradient(145deg,rgba(255,255,255,0.98),rgba(241,245,249,0.92))] shadow-[0_18px_30px_rgba(15,23,42,0.10)] ring-1 ring-[rgba(255,255,255,0.9)]">
                             <span className="pointer-events-none absolute inset-[4px] rounded-[17px] border border-[rgba(37,99,235,0.08)] bg-[radial-gradient(circle_at_top,rgba(59,130,246,0.12),transparent_58%)]" />
                             <img
-                                src="/assets/images/logos/logo.png"
+                                src={`${import.meta.env.BASE_URL}assets/images/logos/logo.png`}
                                 alt="RoomFindR"
                                 className="relative z-10 h-[50px] w-[50px] rounded-[18px] object-contain drop-shadow-[0_10px_18px_rgba(37,99,235,0.18)]"
                             />

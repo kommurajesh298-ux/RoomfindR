@@ -474,7 +474,7 @@ const PropertyDetails: React.FC = () => {
                 {/* ðŸ§­ TOP HEADER BAR */}
                 <div className="rfm-pg-header sticky top-0 z-[110] bg-[linear-gradient(135deg,#2563eb_0%,#1d4ed8_100%)] pl-3 pr-4 h-[60px] flex items-center justify-between border-b border-blue-300/40 shadow-[0_12px_28px_rgba(37,99,235,0.18)]">
                     <Link to="/" className="flex items-center gap-1 active:scale-95 transition-all">
-                        <img src="/assets/images/logos/logo.png" alt="Logo" className="h-[32px] w-auto object-contain drop-shadow-[0_8px_14px_rgba(15,23,42,0.22)]" />
+                        <img src={`${import.meta.env.BASE_URL}assets/images/logos/logo.png`} alt="Logo" className="h-[32px] w-auto object-contain drop-shadow-[0_8px_14px_rgba(15,23,42,0.22)]" />
                         <span className="text-[20px] font-black tracking-tighter">
                             <span className="text-white">Room</span>
                             <span className="text-orange-300">FindR</span>

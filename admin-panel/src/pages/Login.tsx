@@ -90,7 +90,7 @@ const Login: React.FC = () => {
                             <div className="inline-flex items-center gap-3">
                                 <span className="inline-flex h-16 w-16 items-center justify-center overflow-hidden rounded-[18px] bg-transparent shadow-[0_12px_24px_rgba(15,23,42,0.16)]">
                                     <img
-                                        src="/assets/images/logos/logo.png"
+                                        src={`${import.meta.env.BASE_URL}assets/images/logos/logo.png`}
                                         alt="RoomFindR"
                                         className="h-full w-full scale-[1.08] rounded-[inherit] object-cover no-logo-badge"
                                     />
