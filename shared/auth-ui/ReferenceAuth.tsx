@@ -66,7 +66,7 @@ export const ReferenceAuthLayout: React.FC<ReferenceAuthLayoutProps> = ({
   children,
   footer,
   showBrand = true,
-  brandSrc = "/assets/images/logos/logo.png",
+  brandSrc = `${import.meta.env.BASE_URL}assets/images/logos/logo.png`,
   brandAlt = "RoomFindR",
   heroTitle = "Manage your account",
   heroSubtitle = "Login, signup, OTP verification, and password reset in one clean flow.",
