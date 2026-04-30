@@ -1,0 +1,415 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/png" href="/RoomfindR/owner/assets/images/logos/logo.png" />
+  <link rel="apple-touch-icon" href="/RoomfindR/owner/assets/images/logos/logo.png" />
+  <meta http-equiv="Content-Security-Policy" content="
+    default-src 'self';
+    manifest-src 'self';
+    script-src 'self' blob:;
+    worker-src 'self' blob:;
+    style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+    img-src 'self' data: https: blob:;
+    connect-src 'self' wss: https://*.supabase.co wss://*.supabase.co https://*.api-bdc.io https://api-bdc.io https://*.bigdatacloud.net https://api.bigdatacloud.net https://firebasestorage.googleapis.com https://*.cashfree.com blob:;
+    font-src 'self' data: https: https://fonts.gstatic.com;
+    frame-src 'self' https://*.cashfree.com;
+    base-uri 'self';
+    object-src 'none';
+    form-action 'self' https:;
+  " />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <meta name="theme-color" content="#2563EB" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RoomFindR Owner - Partner Portal</title>
+
+  <style>
+    :root {
+      --rfm-splash-start: #1E40AF;
+      --rfm-splash-end: #3B82F6;
+      --rfm-splash-gold: #FFD166;
+      --rfm-splash-surface: rgba(255, 255, 255, 0.08);
+      --rfm-splash-ease: cubic-bezier(0.22, 1, 0.36, 1);
+      --rfm-splash-soft-ease: cubic-bezier(0.33, 1, 0.68, 1);
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, var(--rfm-splash-start) 0%, var(--rfm-splash-end) 100%);
+    }
+
+    #root {
+      min-height: 100vh;
+      opacity: 1;
+      transform: none;
+    }
+
+    body.rfm-splash-active #root {
+      opacity: 0;
+    }
+
+    body.rfm-app-enter #root {
+      animation: app-enter 520ms var(--rfm-splash-soft-ease) both;
+    }
+
+    body:has(#root:empty) {
+      overflow: hidden;
+    }
+
+    .splash-container {
+      position: fixed;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      background:
+        radial-gradient(circle at 50% 42%, rgba(147, 197, 253, 0.28) 0%, transparent 26%),
+        radial-gradient(circle at 16% 18%, rgba(255, 255, 255, 0.1) 0%, transparent 22%),
+        radial-gradient(circle at 82% 14%, rgba(191, 219, 254, 0.12) 0%, transparent 18%),
+        linear-gradient(135deg, var(--rfm-splash-start) 0%, var(--rfm-splash-end) 100%);
+      z-index: 9999;
+      overflow: hidden;
+      transition: opacity 420ms var(--rfm-splash-ease), visibility 420ms var(--rfm-splash-ease), transform 420ms var(--rfm-splash-ease);
+      transform: translate3d(0, 0, 0);
+    }
+
+    .splash-container::before {
+      content: "";
+      position: absolute;
+      inset: -12%;
+      background:
+        radial-gradient(circle at 50% 44%, rgba(255, 255, 255, 0.14) 0%, transparent 28%),
+        radial-gradient(circle at 50% 78%, rgba(147, 197, 253, 0.1) 0%, transparent 24%);
+      animation: splash-background-zoom 2.4s ease-out forwards;
+      transform-origin: center center;
+      pointer-events: none;
+    }
+
+    .splash-container.splash-exit {
+      transform: translate3d(0, -12px, 0);
+    }
+
+    .splash-particles {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    .splash-brand {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 24px;
+      min-height: 100vh;
+      animation: splash-brand-exit 420ms var(--rfm-splash-ease) forwards;
+      animation-play-state: paused;
+    }
+
+    .splash-container.splash-exit .splash-brand {
+      animation-play-state: running;
+    }
+
+    .splash-container.splash-exit .splash-logo-stage {
+      transform: scale(1.1);
+      opacity: 0;
+      transition: transform 420ms var(--rfm-splash-ease), opacity 420ms var(--rfm-splash-ease);
+    }
+
+    .splash-logo-meta {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .splash-logo-stage {
+      position: relative;
+      width: clamp(142px, 24vw, 188px);
+      height: clamp(142px, 24vw, 188px);
+      display: grid;
+      place-items: center;
+      animation: splash-logo-enter 500ms var(--rfm-splash-ease) both;
+    }
+
+    .splash-logo-stage::before {
+      content: "";
+      position: absolute;
+      inset: 8%;
+      border-radius: 999px;
+      background: radial-gradient(circle, rgba(191, 219, 254, 0.98) 0%, rgba(96, 165, 250, 0.46) 38%, transparent 74%);
+      filter: blur(18px);
+      opacity: 0.95;
+      animation: splash-glow-pulse 1.9s ease-in-out 0.52s infinite;
+    }
+
+    .splash-logo-stage::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 58%;
+      width: 182%;
+      height: 72%;
+      transform: translateX(-50%);
+      border-radius: 50%;
+      background:
+        radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.46) 0%, rgba(147, 197, 253, 0.16) 44%, transparent 72%);
+      filter: blur(10px);
+      opacity: 0.8;
+    }
+
+    .splash-logo-card {
+      position: relative;
+      width: clamp(116px, 19vw, 144px);
+      height: clamp(116px, 19vw, 144px);
+      display: grid;
+      place-items: center;
+      border-radius: 28px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      background: linear-gradient(180deg, rgba(37, 99, 235, 0.26) 0%, rgba(30, 64, 175, 0.1) 100%);
+      box-shadow:
+        0 24px 56px rgba(15, 23, 42, 0.24),
+        inset 0 1px 0 rgba(255, 255, 255, 0.16);
+      backdrop-filter: blur(14px);
+      overflow: hidden;
+    }
+
+    .splash-logo-card::before {
+      content: "";
+      position: absolute;
+      inset: -12% 18%;
+      border-radius: 999px;
+      background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.52) 50%, transparent 100%);
+      filter: blur(10px);
+      opacity: 0;
+      transform: translate3d(-40%, 0, 0);
+      animation: splash-shimmer 1.8s ease-in-out 0.75s infinite;
+    }
+
+    .splash-logo {
+      position: relative;
+      z-index: 1;
+      display: block;
+      width: 100%;
+      height: 100%;
+      -o-object-fit: contain;
+         object-fit: contain;
+      filter: drop-shadow(0 12px 28px rgba(15, 23, 42, 0.18));
+    }
+
+    .splash-loader {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 12px;
+      margin-top: 4px;
+      opacity: 0.92;
+    }
+
+    .splash-loader-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.86);
+      box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.12);
+      animation: splash-bounce 1s ease-in-out infinite;
+    }
+
+    .splash-loader-dot:nth-child(2) {
+      background: rgba(255, 255, 255, 1);
+      animation-delay: 0.12s;
+    }
+
+    .splash-loader-dot:nth-child(3) {
+      animation-delay: 0.24s;
+    }
+
+    .splash-particle {
+      position: absolute;
+      bottom: -32px;
+      width: var(--size);
+      height: var(--size);
+      left: var(--left);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.32);
+      opacity: 0;
+      filter: blur(0.2px);
+      animation: splash-particle-rise var(--duration) linear infinite;
+      animation-delay: var(--delay);
+    }
+
+    .splash-particle--spark {
+      background: rgba(255, 255, 255, 0.82);
+      clip-path: polygon(50% 0%, 60% 40%, 100% 50%, 60% 60%, 50% 100%, 40% 60%, 0% 50%, 40% 40%);
+      box-shadow: 0 0 18px rgba(255, 255, 255, 0.36);
+      filter: blur(0);
+    }
+
+    @keyframes splash-logo-enter {
+      from {
+        opacity: 0;
+        transform: scale(0.8);
+      }
+
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    @keyframes splash-background-zoom {
+      from {
+        transform: scale(1);
+      }
+
+      to {
+        transform: scale(1.08);
+      }
+    }
+
+    @keyframes splash-glow-pulse {
+      0%,
+      100% {
+        opacity: 0.72;
+        transform: scale(0.96);
+      }
+
+      50% {
+        opacity: 1;
+        transform: scale(1.04);
+      }
+    }
+
+    @keyframes splash-shimmer {
+      0%,
+      100% {
+        opacity: 0;
+        transform: translate3d(-42%, 0, 0);
+      }
+
+      26%,
+      58% {
+        opacity: 0.72;
+      }
+
+      72% {
+        opacity: 0;
+        transform: translate3d(42%, 0, 0);
+      }
+    }
+
+    @keyframes splash-bounce {
+      0%,
+      100% {
+        opacity: 0.54;
+        transform: translate3d(0, 0, 0) scale(0.84);
+      }
+
+      50% {
+        opacity: 1;
+        transform: translate3d(0, -8px, 0) scale(1);
+      }
+    }
+
+    @keyframes splash-particle-rise {
+      0% {
+        opacity: 0;
+        transform: translate3d(0, 0, 0) scale(0.7);
+      }
+
+      16% {
+        opacity: 0.48;
+      }
+
+      78% {
+        opacity: 0.22;
+      }
+
+      100% {
+        opacity: 0;
+        transform: translate3d(0, -68vh, 0) scale(1.06);
+      }
+    }
+
+    @keyframes splash-brand-exit {
+      to {
+        opacity: 0;
+        transform: translate3d(0, -18px, 0);
+      }
+    }
+
+    @keyframes app-enter {
+      from {
+        opacity: 0;
+        transform: translate3d(0, 20px, 0) scale(0.992);
+      }
+
+      to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0) scale(1);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .splash-container::before,
+      .splash-brand,
+      .splash-logo-stage,
+      .splash-logo-stage::before,
+      .splash-logo-card::before,
+      .splash-loader-dot,
+      .splash-particle,
+      body.rfm-app-enter #root {
+        animation: none !important;
+      }
+    }
+  </style>
+  <script type="module" crossorigin src="/RoomfindR/owner/assets/index-CzAWH-yt.js"></script>
+  <link rel="modulepreload" crossorigin href="/RoomfindR/owner/assets/vendor-react-CU_YFh5A.js">
+  <link rel="modulepreload" crossorigin href="/RoomfindR/owner/assets/vendor-supabase-DlQmibZ2.js">
+  <link rel="modulepreload" crossorigin href="/RoomfindR/owner/assets/vendor-icons-BR8AwXBR.js">
+  <link rel="modulepreload" crossorigin href="/RoomfindR/owner/assets/vendor-data-CO4q71l8.js">
+  <link rel="stylesheet" crossorigin href="/RoomfindR/owner/assets/index-BJiBIKzz.css">
+</head>
+
+<body>
+  <div id="root"></div>
+  <div class="splash-container" id="initial-splash">
+    <div class="splash-brand" aria-label="Loading RoomFindR">
+      <div class="splash-particles" aria-hidden="true">
+        <span class="splash-particle" style="--left:12%;--size:5px;--duration:9.2s;--delay:-1.1s;"></span>
+        <span class="splash-particle" style="--left:18%;--size:3px;--duration:8.4s;--delay:-4.2s;"></span>
+        <span class="splash-particle splash-particle--spark" style="--left:27%;--size:10px;--duration:10.4s;--delay:-2.6s;"></span>
+        <span class="splash-particle" style="--left:31%;--size:6px;--duration:9.8s;--delay:-6.2s;"></span>
+        <span class="splash-particle" style="--left:38%;--size:4px;--duration:8.8s;--delay:-3.4s;"></span>
+        <span class="splash-particle splash-particle--spark" style="--left:46%;--size:12px;--duration:11.2s;--delay:-5.8s;"></span>
+        <span class="splash-particle" style="--left:54%;--size:4px;--duration:9.4s;--delay:-2.2s;"></span>
+        <span class="splash-particle" style="--left:62%;--size:6px;--duration:10s;--delay:-7.4s;"></span>
+        <span class="splash-particle splash-particle--spark" style="--left:70%;--size:11px;--duration:10.6s;--delay:-3.7s;"></span>
+        <span class="splash-particle" style="--left:76%;--size:3px;--duration:8.6s;--delay:-6.8s;"></span>
+        <span class="splash-particle" style="--left:84%;--size:5px;--duration:9.1s;--delay:-4.7s;"></span>
+        <span class="splash-particle splash-particle--spark" style="--left:88%;--size:9px;--duration:10.8s;--delay:-8.1s;"></span>
+      </div>
+      <div class="splash-logo-meta">
+        <div class="splash-logo-stage">
+          <div class="splash-logo-card">
+            <img src="/RoomfindR/owner/assets/images/logos/logo.png" alt="RoomFindR" class="splash-logo" />
+          </div>
+        </div>
+      </div>
+      <div class="splash-loader" aria-hidden="true">
+        <span class="splash-loader-dot"></span>
+        <span class="splash-loader-dot"></span>
+        <span class="splash-loader-dot"></span>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

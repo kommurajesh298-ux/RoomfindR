@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>RoomFindR Websites</title>
+    <style>
+      :root { color-scheme: light; font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+      body { margin: 0; min-height: 100vh; display: grid; place-items: center; background: #f7faf9; color: #11221d; }
+      main { width: min(920px, calc(100% - 32px)); }
+      h1 { font-size: clamp(2rem, 5vw, 4.5rem); margin: 0 0 12px; letter-spacing: 0; }
+      p { margin: 0 0 28px; max-width: 680px; color: #4b635b; font-size: 1.05rem; line-height: 1.6; }
+      .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; }
+      a { display: block; padding: 18px; border: 1px solid #cfe0da; border-radius: 8px; background: white; color: #0b6f57; text-decoration: none; font-weight: 700; box-shadow: 0 14px 38px rgba(17, 34, 29, .08); }
+      a span { display: block; margin-top: 8px; color: #5f756e; font-weight: 500; font-size: .92rem; }
+      a:hover { border-color: #0b6f57; transform: translateY(-1px); }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>RoomFindR</h1>
+      <p>Open the live customer, owner, and admin websites deployed from the GitHub repository.</p>
+      <div class="grid">
+        <a href="./customer/">Customer App<span>Browse and book rooms</span></a>
+        <a href="./owner/">Owner App<span>Manage properties and bookings</span></a>
+        <a href="./admin/">Admin Panel<span>Run platform operations</span></a>
+      </div>
+    </main>
+  </body>
+</html>

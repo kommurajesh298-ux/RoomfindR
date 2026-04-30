@@ -1,0 +1,1 @@
+import{z as o}from"./page-home-B3L17K6Y.js";const c={padding:"16px"},r=(s,e)=>({style:{...c,border:`1px solid ${s}`,color:e}}),t=s=>{o.success(s,{...r("#10B981","#064E3B"),iconTheme:{primary:"#10B981",secondary:"#FFFAEE"}})},n=s=>{o.error(s,{...r("#EF4444","#7F1D1D"),iconTheme:{primary:"#EF4444",secondary:"#FFFAEE"}})};export{t as a,n as s};
